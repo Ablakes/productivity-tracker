@@ -6,29 +6,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>Productivity Tracker</title>
 </head>
 
 <body>
     <div class="timer-container">
-        <h3 class="time" id="timer">00 : 00 : 00 : 00</h3>
+
+        <div class="counter-container">
+            <h3 class="time" id="timer">00 : 00 : 00 : 00</h3>
+            <div class="adjustment-btn-container">
+                <button class="btn btn-add-time" id="btn-work-add-time">&#8679;</button>
+                <button class="btn btn-subtract-time" id="btn-work-subtract-time">&#8681;</button>
+            </div>
+        </div>
+
         <div class="btn-row">
             <button class="btn" id="start">Work</button>
-            <button class="btn" id="reset">Reset</button>
         </div>
-        <h3 class="time" id="rest">00 : 00 : 00 : 00</h3>
-        <button class="btn" id="end">End Workday</button>
-        <p>Play White Noise When working?</p>
 
-        <script src="js/stopwatch.js"></script>
-        <script src="js/main.js"></script>
+        <div class="counter-container">
+            <h3 class="time" id="rest">00 : 00 : 00 : 00</h3>
+            <div class="adjustment-btn-container">
+                <button class="btn btn-add-time" id="btn-rest-add-time">&#8679;</button>
+                <button class="btn btn-subtract-time" id="btn-rest-subtract-time">&#8681;</button>
+            </div>
+        </div>
+        <button class="btn" id="end">End Workday</button>
     </div>
     <div class="record-container">
         <h3 class="record__title">Past Workdays</h3>
-        <ul>
-
-        </ul>
+        <div class="row record__row">
+            <ul class="record__column-heading--work">
+                <li class="record__column-heading">Work</li>
+            </ul>
+            <ul class="record__column-heading record__column-heading--rest">
+                <li class="record__column-heading">Rest</li>
+            </ul>
+            <ul class="record__column-heading record__column-heading--total">
+                <li class="record__column-heading">Total</li>
+            </ul>
+        </div>
     </div>
+
+    <script src="js/stopwatch.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
