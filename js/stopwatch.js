@@ -41,8 +41,13 @@ function Stopwatch(elem) {
         update();
     }
     this.subtractTime = () => {
-        time -= 300000;
-        update();
+        if (time >= 300000) {
+            time -= 300000;
+            update();
+        } else if (time < 300000 && time > 0) {
+            time = 0;
+            update();
+        }
     }
 
     this.isOn = false;
