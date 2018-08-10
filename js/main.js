@@ -15,8 +15,7 @@ const UIController = (function () {
 
     let workTime = new Stopwatch(workClock);
     let breakClock = new Stopwatch(rest);
-
-    const data = [];
+    let data = [];
 
     let formattedDate;
 
