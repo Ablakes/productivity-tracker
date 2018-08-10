@@ -13,52 +13,56 @@ const UIController = (function () {
     const restSubtractTime = document.getElementById('btn-rest-subtract-time');
     const workSubtractTime = document.getElementById('btn-work-subtract-time');
 
-    let workTime = new Stopwatch(workClock);
-    let breakClock = new Stopwatch(rest);
+    let workStopwatch = new Stopwatch(workClock);
+    let breakStopwatch = new Stopwatch(rest);
+
     let data = [];
 
     let formattedDate;
 
+    //BUTTONS TO ADJUST TIME UP/DOWN
     restAddTime.addEventListener('click', () => {
-        breakClock.addTime();
+        breakStopwatch.addTime();
     });
     workAddTime.addEventListener('click', () => {
-        workTime.addTime();
+        workStopwatch.addTime();
     });
     restSubtractTime.addEventListener('click', () => {
-        breakClock.subtractTime();
+        breakStopwatch.subtractTime();
     });
     workSubtractTime.addEventListener('click', () => {
-        workTime.subtractTime();
+        workStopwatch.subtractTime();
     });
 
+    // WORK/BREAK BUTTON
     start.addEventListener('click', () => {
-        if (workTime.isOn) {
-            workTime.stop();
-            breakClock.start();
+        if (workStopwatch.isOn) {
+            workStopwatch.stop();
+            breakStopwatch.start();
             start.textContent = "Work";
             animateworkClockOn();
-            animateBreakClockOff();
+            animatebreakStopwatchOff();
 
         } else {
-            workTime.start();
-            breakClock.stop();
+            workStopwatch.start();
+            breakStopwatch.stop();
             start.textContent = "Break";
             animateworkClockOff();
-            animateBreakClockOn();
+            animatebreakStopwatchOn();
 
         }
     });
 
+    //END WORKDAY BUTTON
     end.addEventListener('click', () => {
-        workTime.stop();
-        breakClock.stop();
+        workStopwatch.stop();
+        breakStopwatch.stop();
         pushToDateRecord();
         pushToWorkRecord();
         pushToBreakRecord();
         pushToTotalRecord();
-        workTime.reset();
-        breakClock.reset();
+        workStopwatch.reset();
+        breakStopwatch.reset();
         start.textContent = "Work";
     });
 
@@ -76,12 +80,12 @@ const UIController = (function () {
         workClock.style.transform = "scale(1)";
     }
 
-    const animateBreakClockOn = () => {
+    const animatebreakStopwatchOn = () => {
         rest.style.color = "rgba(120, 120, 120)";
         rest.style.transform = "scale(.85)";
     }
 
-    const animateBreakClockOff = () => {
+    const animatebreakStopwatchOff = () => {
         rest.style.color = "rgba(0, 0, 0)";
         rest.style.transform = "scale(1)";
     }
@@ -96,12 +100,12 @@ const UIController = (function () {
 
     const loadData = () => {
 
-        //re-populate data from localStorage
+        //RE-POPULATE DATA FROM LOCAL STORAGE
         Object.keys(localStorage).forEach((item) => {
             data.push(JSON.parse(localStorage.getItem(item)));
         });
 
-        // re-post data to records
+        // RE-POST DATA FROM RECORDS
         data.forEach((item) => {
             postDataItem(item[0], dateList);
             postDataItem(item[1], workList, 'green');
@@ -116,7 +120,7 @@ const UIController = (function () {
 
         //Add to record list
         const date = new Date();
-        const month = date.getMonth();
+        const month = date.getMonth() + 1;
         const day = date.getDate();
         formattedDate = `${month}/${day}`;
 
@@ -128,17 +132,17 @@ const UIController = (function () {
     }
 
     const pushToWorkRecord = () => {
-        const time = workTime.returnTime();
-        const formattedWorkTime = recordFormatter(time);
+        const time = workStopwatch.returnTime();
+        const formattedworkStopwatch = recordFormatter(time);
 
-        postDataItem(formattedWorkTime, workList, 'green');
+        postDataItem(formattedworkStopwatch, workList, 'green');
 
         //push to data
-        data[data.length - 1].push(formattedWorkTime);
+        data[data.length - 1].push(formattedworkStopwatch);
     }
 
     const pushToBreakRecord = () => {
-        const restTime = breakClock.returnTime();
+        const restTime = breakStopwatch.returnTime();
         const formattedRestTime = recordFormatter(restTime);
 
         postDataItem(formattedRestTime, restList, 'red');
@@ -149,7 +153,7 @@ const UIController = (function () {
 
     const pushToTotalRecord = () => {
 
-        const totalTime = workTime.returnTime() + breakClock.returnTime();
+        const totalTime = workStopwatch.returnTime() + breakStopwatch.returnTime();
         const formattedTotalTime = recordFormatter(totalTime);
 
         postDataItem(formattedTotalTime, totalList);
