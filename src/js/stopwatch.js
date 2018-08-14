@@ -1,4 +1,4 @@
-function Stopwatch(elem) {
+export default function Stopwatch(elem) {
 
     let time = 0;
     let interval;
@@ -76,28 +76,3 @@ function Stopwatch(elem) {
         update();
     };
 }
-
-
-
-
-
-//This is the way to format time with the date object v
-
-// var dateTime = new Date(time);
-// dateTime.setHours(dateTime.getHours() - 16);
-// let hours = dateTime.getHours().toString();
-// let minutes = dateTime.getMinutes().toString();
-// let seconds = dateTime.getSeconds().toString();
-// let milliseconds = dateTime.getMilliseconds().toString();
-
-// hours.length < 2 ? hours = '0' + hours : null;
-// minutes.length < 2 ? minutes = '0' + minutes : null;
-// seconds.length < 2 ? seconds = '0' + seconds : null;
-
-// while (milliseconds.length < 3) {
-//     milliseconds = `0${milliseconds}`;
-// }
-
-// milliseconds = milliseconds.slice(0, -1);
-
-// return (`${hours} : ${minutes} : ${seconds} : ${milliseconds}`);

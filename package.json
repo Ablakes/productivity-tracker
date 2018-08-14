@@ -1,0 +1,37 @@
+{
+  "name": "v1",
+  "version": "1.0.0",
+  "description": "An app to track how you are spending time during your workdays.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ablakes/productivity-tracker.git"
+  },
+  "author": "Alex Blakesley",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ablakes/productivity-tracker/issues"
+  },
+  "homepage": "https://github.com/Ablakes/productivity-tracker#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^1.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "sass": "^1.11.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.22.1",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  }
+}
