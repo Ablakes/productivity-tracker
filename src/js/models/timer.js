@@ -55,6 +55,25 @@ export default class Timer {
     }
   }
 
+  addTime() {
+    this.time += 300000;
+    this.update();
+  }
+  subtractTime() {
+    if (this.time >= 300000) {
+      this.time -= 300000;
+      this.update();
+    } else if (this.time < 300000 && this.time > 0) {
+      this.time = 0;
+      this.update();
+    }
+  }
+
+  reset() {
+    this.time = 0;
+    this.update();
+  };
+
   returnTime() {
     return this.time;
   }

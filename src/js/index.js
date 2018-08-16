@@ -80,7 +80,7 @@ const postDataItem = (item, list, className) => {
     li.classList.add(className);
 }
 
-const loadData = () => {
+const renderData = () => {
     //RE-POPULATE DATA FROM LOCAL STORAGE
     Object.keys(localStorage).forEach((item) => {
         data.push(JSON.parse(localStorage.getItem(item)));
@@ -95,7 +95,7 @@ const loadData = () => {
     })
 };
 
-loadData();
+renderData();
 
 const pushToDateRecord = () => {
 
