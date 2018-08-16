@@ -1,9 +1,14 @@
-import Stopwatch from './stopwatch';
+import Timer from './models/timer';
+
+
+//////REMOVE THIS//////
+localStorage.clear();
+//////////////////////
 
 
 const workClock = document.getElementById('work-clock');
 const start = document.getElementById('start');
-const rest = document.getElementById('rest');
+const breakClock = document.getElementById('break-clock');
 const end = document.getElementById('end');
 const workList = document.querySelector(".record__column-heading--work");
 const restList = document.querySelector(".record__column-heading--rest");
@@ -14,8 +19,8 @@ const workAddTime = document.getElementById('btn-work-add-time');
 const restSubtractTime = document.getElementById('btn-rest-subtract-time');
 const workSubtractTime = document.getElementById('btn-work-subtract-time');
 
-let workStopwatch = new Stopwatch(workClock);
-let breakStopwatch = new Stopwatch(rest);
+let workStopwatch = new Timer(workClock);
+let breakStopwatch = new Timer(breakClock);
 
 let data = [];
 
@@ -76,8 +81,6 @@ const postDataItem = (item, list, className) => {
 }
 
 const loadData = () => {
-    console.log("this 2?");
-
     //RE-POPULATE DATA FROM LOCAL STORAGE
     Object.keys(localStorage).forEach((item) => {
         data.push(JSON.parse(localStorage.getItem(item)));
@@ -171,11 +174,11 @@ const animateworkClockOff = () => {
 }
 
 const animatebreakStopwatchOn = () => {
-    rest.style.color = "rgba(120, 120, 120)";
-    rest.style.transform = "scale(.85)";
+    breakClock.style.color = "rgba(120, 120, 120)";
+    breakClock.style.transform = "scale(.85)";
 }
 
 const animatebreakStopwatchOff = () => {
-    rest.style.color = "rgba(0, 0, 0)";
-    rest.style.transform = "scale(1)";
+    breakClock.style.color = "rgba(0, 0, 0)";
+    breakClock.style.transform = "scale(1)";
 }

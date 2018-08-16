@@ -4,7 +4,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: "./src/js/main.js",
+    entry: "./src/js/index.js",
     output: {
         path: path.join(__dirname, "dist"),
         // this has to be the absolute path to the file on our machine, that's why we need __dirname(absolute path) along with path.join to attach the public/ folder on the end.
