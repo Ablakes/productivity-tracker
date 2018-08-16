@@ -29,15 +29,15 @@ export default class Timer {
       seconds = Math.floor((time / 1000) % 60),
       minutes = Math.floor((time / (1000 * 60)) % 60),
       hours = Math.floor((time / (1000 * 60 * 60)) % 24);
-    //The modulo makes sure to cut off the hours at 24, minutes at 60, etc. Ex: 12%24 returns 12, whereas 36%24 returns 12 (because it's been 1 day and 12 hours).
-    //Math.floor is important because any number less than 1 means that it hasn't reached the trigger point to add another digit to that denomination.
+    //The modulo makes sure to cut off the hours at 24, minutes at 60, etc. Ex: 12%24 returns 12, and 36%24 returns 12 (because it's been 1 day and 12 hours).
+    //Math.floor is important because any number less than 1 means that it hasn't reached the trigger point to add another digit to the next higher denomination.
 
     hours = hours < 10 ? "0" + hours : hours;
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
     milliseconds = milliseconds < 10 ? "0" + milliseconds : milliseconds;
 
-    return hours + " : " + minutes + " : " + seconds + " : " + milliseconds;
+    return `${hours} : ${minutes} : ${seconds} : ${milliseconds}`;
   }
 
   start() {
